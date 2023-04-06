@@ -9,12 +9,26 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>{{ t('Welcome') }}</h1>
+    <h1>{{ 'Welcome' |trans }}</h1>
 
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href="{{ 'C:/Users/Admin/PhpstormProjects/cms-vt-i18n-l10n/src/Controller/ProductController.php'|file_link(0) }}">src/Controller/ProductController.php</a></code></li>
         <li>Your template at <code><a href="{{ 'C:/Users/Admin/PhpstormProjects/cms-vt-i18n-l10n/templates/product/index.html.twig'|file_link(0) }}">templates/product/index.html.twig</a></code></li>
+    </ul>
+
+    <h2>Here is a localized Number</h2>
+    <p>{{ 1234567890 | format_number }}</p>
+
+    {% set currency = 1234.56 %}
+
+    <h2>Here is a localized Money amount</h2>
+    <p>{{ currency | format_currency('EUR') }}</p>
+
+    See this page in:
+    <ul>
+        <li><a href="{{ path('app_product', {'_locale': 'en'}) }}">English</a></li>
+        <li><a href="{{ path('app_product', {'_locale': 'fr'}) }}">French</a></li>
     </ul>
 </div>
 {% endblock %}
